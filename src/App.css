@@ -1,0 +1,237 @@
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #fff; color: #333; font-size: 14px; }
+a { color: #333; text-decoration: none; }
+
+/* ── Navbar ────────────────────────────────────────────── */
+.navbar {
+  background: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 46px;
+  border-bottom: 1px solid #555;
+}
+.navbar-brand a { color: #fff; font-size: 15px; font-weight: bold; }
+.navbar-links { list-style: none; display: flex; gap: 4px; align-items: center; }
+.navbar-links a { color: #ccc; padding: 5px 10px; font-size: 13px; border-radius: 3px; }
+.navbar-links a:hover { background: #555; color: #fff; }
+.btn-logout {
+  background: transparent;
+  color: #ccc;
+  border: 1px solid #666;
+  padding: 4px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.btn-logout:hover { background: #555; color: #fff; }
+
+/* ── Página ────────────────────────────────────────────── */
+.page { max-width: 960px; margin: 24px auto; padding: 0 16px; }
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.page-header h2 { font-size: 16px; }
+
+/* ── Welcome ───────────────────────────────────────────── */
+.welcome { margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #ddd; }
+.welcome h2 { font-size: 16px; margin-bottom: 4px; }
+.welcome p  { font-size: 13px; color: #777; }
+
+/* ── Tarjetas Home ─────────────────────────────────────── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.module-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px 12px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: #fafafa;
+}
+.module-card:hover { background: #f0f0f0; border-color: #aaa; }
+.module-icon  { font-size: 28px; }
+.module-label { font-size: 13px; color: #333; }
+
+/* ── Tabla ─────────────────────────────────────────────── */
+.table-wrapper { overflow-x: auto; }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #ddd;
+  font-size: 13px;
+}
+.table th {
+  background: #f0f0f0;
+  color: #333;
+  padding: 9px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  font-size: 13px;
+}
+.table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+}
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: #fafafa; }
+.empty { text-align: center; color: #999; padding: 24px; }
+
+/* ── Botones ───────────────────────────────────────────── */
+.btn-primary {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.btn-primary:hover { background: #555; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-secondary {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 7px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.btn-secondary:hover { background: #f0f0f0; }
+
+.btn-edit {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 3px 9px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 4px;
+}
+.btn-edit:hover { background: #f0f0f0; }
+
+.btn-delete {
+  background: #fff;
+  color: #c00;
+  border: 1px solid #ccc;
+  padding: 3px 9px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.btn-delete:hover { background: #fff0f0; border-color: #c00; }
+
+.btn-back {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0;
+  margin-bottom: 12px;
+}
+.btn-back:hover { color: #000; text-decoration: underline; }
+
+/* ── Alertas ───────────────────────────────────────────── */
+.alert {
+  padding: 9px 12px;
+  border-radius: 3px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  border: 1px solid;
+}
+.alert-error   { background: #fff5f5; color: #c00; border-color: #fcc; }
+.alert-success { background: #f5fff5; color: #060; border-color: #cfc; }
+
+/* ── Modal ─────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.modal-box {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+.modal-header h3 { font-size: 14px; }
+.modal-close { background: none; border: none; font-size: 18px; cursor: pointer; color: #999; }
+.modal-close:hover { color: #333; }
+.modal-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.form-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+
+/* ── Inputs ────────────────────────────────────────────── */
+label { font-size: 12px; font-weight: bold; color: #444; display: block; margin-bottom: 2px; }
+input, select, textarea {
+  width: 100%;
+  padding: 6px 9px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 13px;
+  background: #fff;
+}
+input:focus, select:focus { outline: none; border-color: #888; }
+
+/* ── Auth ──────────────────────────────────────────────── */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 46px);
+  background: #fff;
+}
+.auth-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 28px;
+  width: 100%;
+  max-width: 340px;
+}
+.auth-box h2 { text-align: center; font-size: 16px; margin-bottom: 4px; }
+.auth-box h3 { text-align: center; font-size: 13px; color: #777; margin-bottom: 18px; font-weight: normal; }
+.auth-box form { display: flex; flex-direction: column; gap: 10px; }
+.auth-box button { margin-top: 4px; width: 100%; padding: 8px; }
+.auth-link { text-align: center; font-size: 12px; color: #777; margin-top: 12px; }
+.auth-link a { color: #333; text-decoration: underline; }
+
+/* ── Badges ────────────────────────────────────────────── */
+.badge { padding: 2px 7px; border-radius: 3px; font-size: 11px; border: 1px solid #ccc; }
+.badge-nacional      { color: #333; }
+.badge-internacional { color: #333; }
+.badge-desc          { color: #333; }
