@@ -3,7 +3,7 @@ import { getBodegas, createBodega, updateBodega, deleteBodega } from '../service
 import BackButton from '../components/BackButton';
 import Modal from '../components/Modal';
 
-const emptyForm = { nombre: '', direccion: '', ciudad: '', pais: '', capacidad: '' };
+const emptyForm = { nombre: '', direccion: '', ciudad: '', pais: '', tipo: 'nacional' };
 
 export default function BodegasPage() {
   const [bodegas, setBodegas] = useState([]);
@@ -50,13 +50,13 @@ export default function BodegasPage() {
       {msg && <div className="alert alert-success">{msg}</div>}
       <table className="table">
         <thead>
-          <tr><th>ID</th><th>Nombre</th><th>Ciudad</th><th>País</th><th>Capacidad</th><th>Acciones</th></tr>
+          <tr><th>ID</th><th>Nombre</th><th>Ciudad</th><th>País</th><th>Tipo</th><th>Acciones</th></tr>
         </thead>
         <tbody>
           {bodegas.map((b) => (
             <tr key={b.id_bodega}>
               <td>{b.id_bodega}</td><td>{b.nombre}</td>
-              <td>{b.ciudad}</td><td>{b.pais}</td><td>{b.capacidad}</td>
+              <td>{b.ciudad}</td><td>{b.pais}</td><td>{b.tipo}</td>
               <td>
                 <button className="btn-edit" onClick={() => openEdit(b)}>Editar</button>
                 <button className="btn-delete" onClick={() => handleDelete(b.id_bodega)}>Eliminar</button>
@@ -71,14 +71,20 @@ export default function BodegasPage() {
         <Modal title={editId ? 'Editar bodega' : 'Nueva bodega'} onClose={closeModal}>
           {error && <div className="alert alert-error">{error}</div>}
           <form onSubmit={handleSubmit}>
-            {[['nombre','Nombre'],['direccion','Dirección'],['ciudad','Ciudad'],
-              ['pais','País'],['capacidad','Capacidad']].map(([name, label]) => (
+            {[['nombre','Nombre'],['direccion','Dirección'],['ciudad','Ciudad'],['pais','País']].map(([name, label]) => (
               <div key={name}>
                 <label>{label}</label>
-                <input name={name} type={name === 'capacidad' ? 'number' : 'text'}
-                  value={form[name] || ''} onChange={handleChange} required />
+                <input name={name} type="text" value={form[name] || ''}
+                  onChange={handleChange} required={['nombre','pais'].includes(name)} />
               </div>
             ))}
+            <div>
+              <label>Tipo</label>
+              <select name="tipo" value={form.tipo || 'nacional'} onChange={handleChange} required>
+                <option value="nacional">Nacional</option>
+                <option value="internacional">Internacional</option>
+              </select>
+            </div>
             <div className="form-actions">
               <button type="button" className="btn-secondary" onClick={closeModal}>Cancelar</button>
               <button type="submit" className="btn-primary">Guardar</button>
